@@ -12,13 +12,13 @@ The purpose of this app is to learn and apply the fundamentals of Python.
 
 Written with Microsoft Visual Studio 2
 
-Written in Python
+Written in Python using Pygame
 
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Pygame.org](http://pygame.org)
+* [Coders Legacy](http://coderslegacy.com)
 
 # Future Work
 
