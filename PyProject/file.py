@@ -1,6 +1,9 @@
 import pygame, sys
 from pygame.locals import *
 import random
+import PyProject
+
+
 
 pygame.init()
 BLUE  = (0, 0, 255)

@@ -16,20 +16,24 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
  
 # Setup a 300x300 pixel display with caption
-DISPLAYSURF = pygame.display.set_mode((300,300))
+DISPLAYSURF = pygame.display.set_mode((600,600))
 DISPLAYSURF.fill(WHITE)
-pygame.display.set_caption("Example")
+pygame.display.set_caption("Marble Solitaire")
  
 # Creating Lines and Shapes
-pygame.draw.line(DISPLAYSURF, BLUE, (150,130), (130,170))
-pygame.draw.line(DISPLAYSURF, BLUE, (150,130), (170,170))
-pygame.draw.line(DISPLAYSURF, GREEN, (130,170), (170,170))
-pygame.draw.circle(DISPLAYSURF, BLACK, (100,50), 30)
-pygame.draw.circle(DISPLAYSURF, BLACK, (200,50), 30)
-pygame.draw.rect(DISPLAYSURF, RED, (100, 200, 100, 50), 2)
-pygame.draw.rect(DISPLAYSURF, BLACK, (110, 260, 80, 5))
+def createMarbles(num1, num2):
+    j = 0
+    i = 0
+    for j in range(num1,num2):
+        
+        for i in range(num1,num2):
+            pygame.draw.circle(DISPLAYSURF, BLUE, ((i*80), (j*80)), 30)
+
+
+
  
 # Beginning Game Loop
+createMarbles(1,7)
 while True:
     pygame.display.update()
     for event in pygame.event.get():
