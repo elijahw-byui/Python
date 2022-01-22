@@ -1,10 +1,10 @@
 # Overview
 
-First Python Project
+Marble Solitaire in Python
 
-This application will be in Python.
+Written using Pygame
 
-The purpose of this app is to learn and apply the fundamentals of Python. 
+Marble Solitaire is a puzzle game. You start with 37 holes, and 36 marbles. You win by getting rid of all of the marbles except for one. You eliminate a marble by jumping it with another marble. Once you are unable to jump anymore the game is over and you cound how many marbles remain. The lower your score the better. 
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -16,7 +16,6 @@ Written in Python using Pygame
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Pygame.org](http://pygame.org)
 * [Coders Legacy](http://coderslegacy.com)
 * [Geeks For Geeks](http://geeksforgeeks.org)
@@ -24,7 +23,7 @@ Written in Python using Pygame
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* It will allow you to move to any square that is a jump away, even if there isn't a marble to jump (no cheating!)
+* Add a scoring system that will tally up either how many marbles have been jumped, or how many are left.
+* A tradition Marble Solitaire board has a rim around the edge where you place the marbles once they've been one. Add a place for the marbles to go where you can see how many you've won. 
+* Simplifying the code.

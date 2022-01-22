@@ -13,13 +13,13 @@ FramePerSec = pygame.time.Clock()
 
 WHITE = (255, 255, 255)
  
-# Setup a 300x300 pixel display with caption
+# Sets up the display window (600x600)
 DISPLAYSURF = pygame.display.set_mode((600,600))
 DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Marble Solitaire")
- 
+# list of Marbles and holes
 list = []
-
+# the class to define each of the divits where a marble is able to sit. 
 class Spot(pygame.sprite.Sprite):
     id = (0,0)
     def __init__(self):
@@ -54,10 +54,7 @@ class Spot(pygame.sprite.Sprite):
     def whichDelete(self, x, y):
         pass
                 
-
-                
-
-
+# The class that all of the marble objects will be made with.
 class Marble(pygame.sprite.Sprite):
     id = (0,0)
     def __init__(self):
@@ -67,9 +64,11 @@ class Marble(pygame.sprite.Sprite):
         self.clicked = False
         self.isMarble = True
         self.isValidSpot = False
+    #to update the marbles postion
     def setPosition(self, num1, num2):
         self.rect.center = (num1,num2) 
         self.id = (num1, num2)
+    # update screen position every time it's moved. 
     def updates(self):
         co1 = self.id[0]
         co2 = self.id[1]
@@ -83,6 +82,7 @@ class Marble(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect) 
     def validSpot(self,list, num, num2):
         return
+    #checks to see if the move is a valid 2 squares side to side or bottom to top. 
     def validMove(self, spotX, spotY):
         if self.id[0] == (spotX + 120) and spotY == self.id[1]:
             return True
@@ -94,6 +94,7 @@ class Marble(pygame.sprite.Sprite):
             return True
         else:
             return False
+    #checks which marble to get rid of when a marble get's jumped. 
     def whichDelete(self, spotX, spotY):
         if self.id[0] == (spotX + 120) and spotY == self.id[1]:
             return spotX + 60, spotY 
@@ -125,7 +126,7 @@ def createMarblesNew(spotOrMarble, startPointX, startPointY, number):
 
 
 
-#Creates the objects of the Spaces.
+#Creates the instances of the Spaces.
 createMarblesNew(1,180,120,4)
 createMarblesNew(1,120,180,6)
 createMarblesNew(1,60,240,8)
@@ -133,7 +134,7 @@ createMarblesNew(1,180,480,4)
 createMarblesNew(1,120,420,6)
 createMarblesNew(1,60,360,8)
 createMarblesNew(1,60,300,8)
-#Creates the objects of the Marbles.
+#Creates the instances of the Marbles.
 createMarblesNew(2,180,120,4)
 createMarblesNew(2,120,180,6)
 createMarblesNew(2,60,240,8)
@@ -144,14 +145,14 @@ createMarblesNew(2,60,300,4)
 createMarblesNew(2,300,300,4)
 
 DISPLAYSURF.fill(WHITE)
-# Beginning Game Loop
-#isClicked = False
+# Is used to classify whether or not a marble has been selected. 
 class clickers():
     def __init__(self):
         super().__init__()
         self.isClicked = False
 
 booleo = clickers()
+# Plays through the game. 
 while True:
     pygame.display.update()
     for item in list:
