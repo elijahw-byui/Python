@@ -1,9 +1,8 @@
 from typing import SupportsComplex
+from numpy import flip
 import pygame, sys
 from pygame.locals import *
 
-
- 
 # Initialize program
 pygame.init()
  
@@ -19,6 +18,25 @@ DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Marble Solitaire")
 # list of Marbles and holes
 list = []
+class Counter(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.marblesLeft = 35
+        self.marblesWon = 1
+        self.stuff = pygame.font.SysFont('helvetica', 15)
+        self.flip = True
+        
+    def writeMessage(self, surface):
+        DISPLAYSURF.fill(WHITE)
+        self.message = self.stuff.render(f"Marbles Won: {self.marblesWon}", self.flip, (0,0,0))
+        self.message2 = self.stuff.render(f"Marbles Left: {self.marblesLeft}", self.flip, (0,0,0))
+        surface.blit(self.message, (20,50))
+        surface.blit(self.message2, (20,100))
+        self.flip = not self.flip
+        
+    def update(self):
+        self.writeMessage(DISPLAYSURF)
+
 # the class to define each of the divits where a marble is able to sit. 
 class Spot(pygame.sprite.Sprite):
     id = (0,0)
@@ -150,11 +168,13 @@ class clickers():
     def __init__(self):
         super().__init__()
         self.isClicked = False
+timeX = Counter()
 
 booleo = clickers()
 # Plays through the game. 
 while True:
     pygame.display.update()
+    
     for item in list:
         item.updates()
     for event in pygame.event.get():
@@ -189,11 +209,13 @@ while True:
                                 booleo.isClicked = not booleo.isClicked
                                 
                                 for items in list:
+                                    
                                     if items.id == var and items.isMarble:
-                                        items.setPosition(50,50)
+                                        items.setPosition(20,20)
+                                        timeX.update()
+                                        timeX.marblesLeft -= 1
+                                        timeX.marblesWon  += 1
 
-                            
-
-
+                        
    
     FramePerSec.tick(FPS)
